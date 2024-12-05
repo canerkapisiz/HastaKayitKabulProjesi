@@ -1,0 +1,30 @@
+@model IEnumerable<HastaKayitProjesi.Models.DoktorViewModel>
+
+<a href="@Url.Action("Ekle")" class="btn btn-primary mb-3">Doktor Ekle</a>
+<h2 class="mb-3">Doktor Listesi</h2> <!-- Başlık -->
+
+@if (Model.Any())
+{
+    var doktorlarGrup = Model.GroupBy(d => d.BolumAd); // Doktorları bölümlerine göre grupla.
+    foreach (var grup in doktorlarGrup)
+    {
+        <h3>@grup.Key</h3> <!-- Bölüm adı başlık olarak gösterilir. -->
+        <table class="table table-bordered mb-4">
+    <thead class="table-dark">
+        <tr>
+            <th>Doktor</th>
+            <th>Bolum Adı</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var doktor in grup)
+                {
+                    <tr>
+                        <td>@doktor.AdSoyad</td>
+                        <td>@doktor.BolumAd</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}

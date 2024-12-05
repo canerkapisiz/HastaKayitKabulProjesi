@@ -1,0 +1,19 @@
+@model HastaKayitProjesi.Models.Bolum
+
+<h2>Hastaneye Yeni Bölüm Ekle</h2> <!-- Form başlığı -->
+
+<form asp-action="Ekle" method="post"> <!-- Bölüm ekleme formu -->
+    <div class="form-group">
+        <input type="text" class="form-control mt-3" id="BolumAdi" name="BolumAdi" placeholder="Bölüm Adı..." />
+        <!-- Kullanıcının bölüm adı girdiği alan -->
+        <span asp-validation-for="BolumAdi" class="text-danger"></span>
+        <!-- Geçerlilik mesajları burada görüntülenir -->
+    </div>
+
+    @if (ViewBag.Mesaj != null)
+    {
+        <h6 class="alert alert-danger mt-3">@ViewBag.Mesaj</h6> <!-- Kullanıcıya hata mesajını göster -->
+    }
+
+    <button type="submit" class="btn btn-success mt-3">Hastaneye Bölüm Ekle</button> <!-- Formu gönderme butonu -->
+</form>

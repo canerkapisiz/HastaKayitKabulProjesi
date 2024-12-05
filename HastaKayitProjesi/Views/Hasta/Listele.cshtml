@@ -1,0 +1,27 @@
+<!-- Hasta listesi görünümü (Razor View) -->
+@model IEnumerable<HastaKayitProjesi.Models.Hasta>
+
+<h2 class="mt-3">Hasta Listesi</h2>
+<a href="/Hasta/Ekle" class="btn btn-primary mt-3">Yeni Hasta Ekle</a>
+
+<table class="table table-bordered mt-3">
+    <thead class="table-dark">
+        <tr>
+            <th>T.C. Kimlik No</th>
+            <th>Ad Soyad</th>
+            <th>Telefon</th>
+            <th>Adres</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var hasta in Model)
+        {
+            <tr>
+                <td>@hasta.TcKimlikNo</td>
+                <td>@hasta.AdSoyad</td>
+                <td>@hasta.Telefon</td>
+                <td>@hasta.Adres</td>
+            </tr>
+        }
+    </tbody>
+</table>

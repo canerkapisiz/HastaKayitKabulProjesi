@@ -1,0 +1,128 @@
+@if (!ViewData.ModelState.IsValid)
+{
+    <!-- Model doğrulama hatası varsa, hata mesajlarını göster -->
+    <div class="alert alert-danger">
+    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <p>@error.ErrorMessage</p>
+        }
+    </div>
+}
+
+<!-- Form Başlangıcı -->
+<form asp-action="Ekle" method="post">
+    <!-- T.C. Kimlik Numarası Giriş Alanı -->
+    <div class="form-group mt-3">
+        <input type="text" class="form-control" id="TcKimlikNo" name="TcKimlikNo"
+            placeholder="T.C. Kimlik Numarası Giriniz" required />
+    </div>
+
+    <!-- Bölüm Seçimi -->
+    <div class="form-group mt-3">
+        <select class="form-control" id="BolumId" name="BolumId" required>
+            <option value="">Bölüm Seçiniz...</option>
+            @if (ViewBag.Bolumler != null)
+            {
+                @* ViewBag.Bolumler'den gelen bölüm listesi ile seçim yapılır *@
+                foreach (var bolum in ViewBag.Bolumler)
+                {
+                    <option value="@bolum.Id">@bolum.BolumAdi</option>
+                }
+            }
+        </select>
+    </div>
+
+    <!-- Doktor Seçimi -->
+    <div class="form-group mt-3">
+        <select class="form-control" id="DoktorId" name="DoktorId" required>
+            <option value="">Doktor Seçiniz...</option>
+        </select>
+    </div>
+
+    <!-- Tarih Seçimi -->
+    <div class="form-group mt-3">
+        <input type="text" class="form-control" id="RandevuTarihi" name="RandevuTarihi" readonly required />
+        <button type="button" class="btn btn-primary mt-2" id="takvimAcButton" disabled>Takvim Aç</button>
+    </div>
+
+    <!-- Saat Seçimi ve Modal Butonu -->
+    <div class="form-group mt-3">
+        <input type="text" class="form-control" id="RandevuSaati" name="RandevuSaati" readonly required />
+        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#saatSecModal"
+            id="saatAcmaButon" disabled>
+            Saat Seç
+        </button>
+    </div>
+
+    <!-- Randevu Ekle Butonu -->
+    <button type="submit" class="btn btn-success mt-3">Randevuyu Ekle</button>
+</form>
+
+<!-- Saat Seçim Modalı -->
+<div class="modal fade" id="saatSecModal" tabindex="-1" aria-labelledby="saatSecModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="saatSecModalLabel">Randevu Saati Seç</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
+                <!-- Saat Seçim Tablosu -->
+                <table class="table table-bordered text-center">
+                    <thead>
+                        <tr>
+                            <th>09:00</th>
+                            <th>10:00</th>
+                            <th>11:00</th>
+                            <th>13:00</th>
+                            <th>14:00</th>
+                            <th>15:00</th>
+                            <th>16:00</th>
+                        </tr>
+                    </thead>
+                    <tbody id="saatSecenekleri"></tbody>
+                </table>
+            </div>
+            <div class="d-flex flex-column align-items-center my-3">
+                <!-- Grup 1: Siyah Buton ve Açıklama (Dolmuş saatler) -->
+                <div class="d-flex align-items-center mb-3">
+                    <button class="btn btn-dark btn-sm" disabled></button>
+                    <span class="text-muted ms-2" style="font-size: 0.9rem;">Siyah randevu saatleri doldu.</span>
+                </div>
+
+                <!-- Grup 2: Beyaz Buton ve Açıklama (Boş saatler) -->
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-outline-secondary btn-sm" disabled></button>
+                    <span class="text-muted ms-2" style="font-size: 0.9rem;">Beyaz randevu saatlerinden birini
+                        seçebilirsiniz.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Takvim Alanı -->
+<div id="takvimContainer"
+    style="display:none; position:absolute; z-index:1000; background:white; border:1px solid #ccc; padding:10px;">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+        <button id="oncekiAy" class="btn btn-sm btn-outline-secondary">Önceki Ay</button>
+        <span id="takvimBaslik" class="fw-bold"></span>
+        <button id="sonrakiAy" class="btn btn-sm btn-outline-secondary">Sonraki Ay</button>
+    </div>
+    <!-- Takvim Tablosu -->
+    <table class="table table-bordered text-center">
+        <thead>
+            <tr>
+                <th>Pzt</th>
+                <th>Sal</th>
+                <th>Çar</th>
+                <th>Per</th>
+                <th>Cuma</th>
+            </tr>
+        </thead>
+        <tbody id="takvimBody"></tbody>
+    </table>
+</div>
+
+<!-- JavaScript dosyasını yükle -->
+<script src="~/js/RandevuKayitCreate.js"></script>

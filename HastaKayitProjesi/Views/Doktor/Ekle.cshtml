@@ -1,0 +1,17 @@
+@model HastaKayitProjesi.Models.Doktor
+
+<h2>Yeni Doktor Ekle</h2> <!-- Başlık -->
+
+<form asp-action="Ekle" method="post"> <!-- Doktor ekleme formu -->
+    <div class="form-group mt-3">
+        <input asp-for="AdSoyad" class="form-control" placeholder="Doktor Adı Giriniz..." required />
+    </div>
+
+    <div class="form-group mt-3">
+        <select asp-for="BolumId" class="form-control" asp-items="ViewBag.BolumListesi" required>
+            <option value="">Bölüm Adı Seçiniz...</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3">Yeni Doktor Ekleyiniz</button>
+</form>

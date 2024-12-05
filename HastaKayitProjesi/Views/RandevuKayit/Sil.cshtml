@@ -1,0 +1,69 @@
+@model IEnumerable<HastaKayitProjesi.Models.RandevuKayit>
+
+<h2>Hastanın Randevusu Sil</h2>
+
+<!-- Randevuları sorgulamak için T.C. Kimlik Numarası inputu ve formu -->
+<form asp-action="Sil" method="get">
+    <div class="form-group mt-3">
+        <input type="text" class="form-control" id="TcKimlikNo" name="TcKimlikNo"
+            placeholder="T.C. Kimlik Numarası Giriniz" maxlength="11" required />
+    </div>
+    <!-- Sorgula butonu -->
+    <button type="submit" class="btn btn-primary mt-3">Randevuyu Sorgula</button>
+</form>
+
+@if (ViewBag.IsFirstLoad != true) // İlk yükleme değilse kontrol başlar
+{
+    @if (Model != null && Model.Any()) // Model null değilse ve içinde randevu varsa
+    {
+        // Randevuları, bölüm adına göre grupluyoruz
+        var randevularByBolum = Model
+        .GroupBy(r => r.Bolum.BolumAdi) // Bölüm adına göre gruplama
+        .OrderBy(g => g.Key); // Bölüm adına göre sıralama
+
+        // Her bir grup için (bölüm) bir başlık ve tablo oluşturuyoruz
+        foreach (var grup in randevularByBolum)
+        {
+            <h3 class="mt-4">@grup.Key</h3> <!-- Bölüm adı (grup.Key) başlık olarak -->
+            <table class="table table-bordered mb-3">
+    <thead class="table-dark">
+        <tr>
+            <th>Hasta Adı</th> <!-- Hasta adı başlığı -->
+            <th>Doktor</th> <!-- Doktor adı başlığı -->
+            <th>Randevu Tarihi</th> <!-- Randevu tarihi başlığı -->
+            <th>Sil</th> <!-- Silme işlemi başlığı -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var randevu in grup) // Grup içindeki her randevuyu döngüyle geziyoruz
+                    {
+                        <tr>
+                            <td>@randevu.Hasta.AdSoyad</td> <!-- Hastanın adı -->
+                            <td>@randevu.Doktor.AdSoyad</td> <!-- Doktorun adı -->
+                            <td>@randevu.RandevuTarihi.ToString("dd/MM/yyyy HH:mm")</td> <!-- Randevu tarihi ve saati -->
+                            <td>
+                                <!-- Her bir randevu için bir silme butonu -->
+                                <form asp-action="Sil" method="post">
+                                    <input type="hidden" name="id" value="@randevu.Id" />
+                                    <!-- Randevu id'si gizli inputla gönderilir -->
+                                    <button type="submit" class="btn btn-danger">Sil</button> <!-- Silme butonu -->
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    }
+    else
+    {
+        <!-- Eğer randevu bulunamazsa, kullanıcıya uyarı mesajı göster -->
+        <h6 class="alert alert-danger mt-3">Sorgulanan T.C. Kimlik Numarası için randevu bulunmamaktadır.</h6>
+    }
+}
+
+<!-- Hatalı T.C. Kimlik Numarası için uyarı mesajı -->
+<h6 id="hatamesaji" class="alert alert-danger mt-3" style="display: none;">T.C. kimlik numarası 11 haneli olmalıdır.
+</h6>
+
+<script src="~/js/RandevuKayitSorgula.js"></script>

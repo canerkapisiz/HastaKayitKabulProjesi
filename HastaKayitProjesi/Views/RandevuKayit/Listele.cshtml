@@ -1,0 +1,48 @@
+@{
+    // Bugün için alınan randevuları ViewBag'den alıyoruz.
+    var bugununRandevulari = ViewBag.BugununRandevulari as List<HastaKayitProjesi.Models.RandevuKayit>;
+}
+
+<!-- Sayfa başlığı, bugünün randevuları görüntüleniyor. -->
+<h1 class="mb-4">Bugünün Randevuları</h1>
+
+@if (bugununRandevulari != null && bugununRandevulari.Any())
+{
+    // Eğer bugün için randevular varsa, randevuları bölüm adına göre grupla.
+    var randevularByBolum = bugununRandevulari
+    .GroupBy(r => r.Bolum.BolumAdi) // Bölüm adlarına göre gruplama
+    .OrderBy(g => g.Key); // Bölüm adına göre sıralama (isteğe bağlı)
+
+    foreach (var grup in randevularByBolum)
+    {
+        <!-- Her grup (bölüm) için bir başlık oluştur -->
+        <h3>@grup.Key</h3> <!-- Bölüm adı (grup.Key) burada başlık olarak kullanılır -->
+
+        <!-- Randevu listesini tablo olarak göster -->
+        <table class="table table-bordered mb-4">
+    <thead class="table-dark">
+        <tr>
+            <th>Hasta Adı</th> <!-- Hasta adı başlığı -->
+            <th>Doktor</th> <!-- Doktor başlığı -->
+            <th>Randevu Tarihi</th> <!-- Randevu tarihi başlığı -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var randevu in grup)
+                {
+                    <!-- Her randevu için bir satır oluştur -->
+                    <tr>
+                        <td>@randevu.Hasta.AdSoyad</td> <!-- Hastanın adı -->
+                        <td>@randevu.Doktor.AdSoyad</td> <!-- Doktorun adı -->
+                        <td>@randevu.RandevuTarihi.ToString("dd/MM/yyyy HH:mm")</td> <!-- Randevu tarihi ve saati -->
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
+else
+{
+    <!-- Eğer bugüne ait randevu yoksa, uyarı mesajı göster -->
+    <p class="alert alert-danger text-muted">Bugün için randevu bulunmamaktadır.</p>
+}

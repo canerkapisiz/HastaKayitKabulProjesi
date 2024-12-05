@@ -1,0 +1,32 @@
+<!-- Hasta ekleme formu (Razor View) -->
+@model HastaKayitProjesi.Models.Hasta
+
+<!-- Hata mesajlarını göster -->
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+    @foreach (var hata in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <p>@hata.ErrorMessage</p>
+        }
+    </div>
+}
+
+<h2>Hasta Bilgileri</h2>
+
+<form asp-action="Ekle" method="post">
+    <div class="form-group mt-3">
+        <input asp-for="TcKimlikNo" class="form-control" placeholder="T.C. Kimlik No Giriniz" />
+    </div>
+    <div class="form-group mt-3">
+        <input asp-for="AdSoyad" class="form-control" placeholder="Ad Soyad Giriniz" />
+    </div>
+
+    <div class="form-group mt-3">
+        <input asp-for="Telefon" class="form-control" placeholder="Telefon Numarası Giriniz" />
+    </div>
+    <div class="form-group mt-3">
+        <input asp-for="Adres" class="form-control" placeholder="Adres Giriniz" />
+    </div>
+    <button type="submit" class="btn btn-success mt-3">Kaydet</button>
+</form>

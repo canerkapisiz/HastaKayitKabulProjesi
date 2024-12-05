@@ -1,0 +1,62 @@
+@model IEnumerable<HastaKayitProjesi.Models.RandevuKayit>
+
+<h2>Hastanın Randevularını Sorgula</h2>
+
+<!-- T.C. Kimlik Numarası ile randevuları sorgulamak için form -->
+<form method="get" action="@Url.Action("Sorgula", "RandevuKayit")">
+    <div class="form-group mt-3">
+        <!-- Kullanıcıdan T.C. Kimlik Numarası alınır -->
+        <input type="text" class="form-control" id="TcKimlikNo" name="tcKimlikNo"
+            placeholder="Sorgulamak İstediğiniz Hastanın T.C. Kimlik Numarasını Giriniz" maxlength="11" required />
+        <!-- Sorgulama butonu -->
+        <button type="submit" class="btn btn-primary mt-3">Randevuları Göster</button>
+    </div>
+</form>
+
+@if (ViewBag.IsFirstLoad != true) // İlk yükleme değilse kontrol başlar
+{
+    @if (Model != null && Model.Any()) // Model null değilse ve içeriği varsa
+    {
+        // Randevuları bölüm adına göre grupluyoruz
+        var randevularByBolum = Model
+        .GroupBy(r => r.Bolum.BolumAdi) // Randevuları bölümlere ayırıyoruz
+        .OrderBy(g => g.Key); // Bölüm adına göre sıralama yapıyoruz (isteğe bağlı)
+
+        // Her grup için (bölüm) başlık ve tablo oluşturuyoruz
+        foreach (var grup in randevularByBolum)
+        {
+            <h3 class="mt-4">@grup.Key</h3> <!-- Bölüm adı (grup.Key) başlık olarak -->
+            <table class="table table-bordered mb-3">
+    <thead class="table-dark">
+        <tr>
+            <th>Hasta Adı</th> <!-- Hasta adı başlığı -->
+            <th>Doktor</th> <!-- Doktor adı başlığı -->
+            <th>Randevu Tarihi</th> <!-- Randevu tarihi başlığı -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var randevu in grup) // Grup içindeki her randevuyu döngüyle geziyoruz
+                    {
+                        <tr>
+                            <td>@randevu.Hasta.AdSoyad</td> <!-- Hastanın adı -->
+                            <td>@randevu.Doktor.AdSoyad</td> <!-- Doktorun adı -->
+                            <td>@randevu.RandevuTarihi.ToString("dd/MM/yyyy HH:mm")</td> <!-- Randevu tarihi ve saati -->
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    }
+    else
+    {
+        <!-- Eğer sorgulanan T.C. Kimlik Numarası için randevu bulunmazsa, kullanıcıya mesaj göster -->
+        <h6 class="alert alert-danger mt-3">Sorgulanan T.C. Kimlik Numarası için randevu bulunmamaktadır.</h6>
+    }
+}
+
+<!-- T.C. Kimlik Numarası hatalıysa gösterilecek uyarı mesajı -->
+<h6 id="hatamesaji" class="alert alert-danger mt-3" style="display: none;">T.C. kimlik numarası 11 haneli olmalıdır.
+</h6>
+
+<!-- Randevu sorgulama işlemi için JavaScript dosyasının eklenmesi -->
+<script src="~/js/RandevuKayitSorgula.js"></script>

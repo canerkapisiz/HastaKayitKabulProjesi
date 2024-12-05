@@ -1,0 +1,97 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/canerkapisiz/Desktop/Project/HastaKayitProjesi/HastaKayitProjesi.csproj": {}
+  },
+  "projects": {
+    "/Users/canerkapisiz/Desktop/Project/HastaKayitProjesi/HastaKayitProjesi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/canerkapisiz/Desktop/Project/HastaKayitProjesi/HastaKayitProjesi.csproj",
+        "projectName": "HastaKayitProjesi",
+        "projectPath": "/Users/canerkapisiz/Desktop/Project/HastaKayitProjesi/HastaKayitProjesi.csproj",
+        "packagesPath": "/Users/canerkapisiz/.nuget/packages/",
+        "outputPath": "/Users/canerkapisiz/Desktop/Project/HastaKayitProjesi/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/canerkapisiz/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "all"
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.19, 7.0.19]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.osx-arm64",
+              "version": "[7.0.19, 7.0.19]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.19, 7.0.19]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.100-preview.6.24328.19/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

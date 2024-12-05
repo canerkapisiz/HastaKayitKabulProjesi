@@ -1,0 +1,21 @@
+@model IEnumerable<HastaKayitProjesi.Models.Bolum>
+
+<h2 class="mb-3 mt-3">Bölüm Listesi</h2> <!-- Bölüm listesi başlığı -->
+<a asp-action="Ekle" class="btn btn-primary mb-3">Yeni Bölüm Ekle</a>
+<!-- Yeni bölüm ekleme sayfasına yönlendirme butonu -->
+
+<table class="table table-bordered"> <!-- Bölüm tablosu -->
+    <thead class="table-dark"> <!-- Tablo başlıkları -->
+        <tr>
+            <th>Bölüm Adı</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bolum in Model)
+        {
+            <tr>
+                <td>@bolum.BolumAdi</td> <!-- Bölüm adı -->
+            </tr>
+        }
+    </tbody>
+</table>
