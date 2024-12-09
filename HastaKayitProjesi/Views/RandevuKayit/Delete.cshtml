@@ -3,7 +3,7 @@
 <h2>Hastanın Randevusu Sil</h2>
 
 <!-- Randevuları sorgulamak için T.C. Kimlik Numarası inputu ve formu -->
-<form asp-action="Sil" method="get">
+<form asp-action="Delete" method="get">
     <div class="form-group mt-3">
         <input type="text" class="form-control" id="TcKimlikNo" name="TcKimlikNo"
             placeholder="T.C. Kimlik Numarası Giriniz" maxlength="11" required />
@@ -43,7 +43,7 @@
                             <td>@randevu.RandevuTarihi.ToString("dd/MM/yyyy HH:mm")</td> <!-- Randevu tarihi ve saati -->
                             <td>
                                 <!-- Her bir randevu için bir silme butonu -->
-                                <form asp-action="Sil" method="post">
+                                <form asp-action="Delete" method="post">
                                     <input type="hidden" name="id" value="@randevu.Id" />
                                     <!-- Randevu id'si gizli inputla gönderilir -->
                                     <button type="submit" class="btn btn-danger">Sil</button> <!-- Silme butonu -->

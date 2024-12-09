@@ -15,7 +15,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 ">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="RandevuKayit" asp-action="Listele">Hasta Kayıt Kabul
+                <a class="navbar-brand" asp-area="" asp-controller="RandevuKayit" asp-action="Index">Hasta Kayıt Kabul
                     Projesi</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,15 +26,19 @@
 
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Bolum"
-                                asp-action="Listele">Bolüm</a>
+                                asp-action="Index">Bolüm</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Doktor"
-                                asp-action="Listele">Doktor</a>
+                                asp-action="Index">Doktor</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Hasta"
-                                asp-action="Listele">Hasta</a>
+                                asp-action="Index">Hasta</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="RandevuKayit"
+                                asp-action="Islemler">İşlemler</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -44,19 +48,19 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="RandevuKayit"
-                                        asp-action="Listele">Bugünün Randevuları</a>
+                                        asp-action="Index">Bugünün Randevuları</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="RandevuKayit"
-                                        asp-action="Ekle">Randevu Kayit</a>
+                                        asp-action="Create">Randevu Kayit</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="RandevuKayit"
-                                        asp-action="Sil">Randevu Sil</a>
+                                        asp-action="Delete">Randevu Sil</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="RandevuKayit"
-                                        asp-action="Sorgula">Randevu Sorgula</a>
+                                        asp-action="Search">Randevu Sorgula</a>
                                 </li>
                             </ul>
                         </li>

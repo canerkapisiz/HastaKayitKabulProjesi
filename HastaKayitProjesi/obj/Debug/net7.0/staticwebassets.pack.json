@@ -21,8 +21,12 @@
       "PackagePath": "staticwebassets/js/RandevuKayitCreate.js"
     },
     {
-      "Id": "/Users/canerkapisiz/Desktop/Project/HastaKayitProjesi/wwwroot/js/RandevuKayitSorgula.js",
-      "PackagePath": "staticwebassets/js/RandevuKayitSorgula.js"
+      "Id": "/Users/canerkapisiz/Desktop/Project/HastaKayitProjesi/wwwroot/js/RandevuKayitIslemler.js",
+      "PackagePath": "staticwebassets/js/RandevuKayitIslemler.js"
+    },
+    {
+      "Id": "/Users/canerkapisiz/Desktop/Project/HastaKayitProjesi/wwwroot/js/RandevuKayitSearch.js",
+      "PackagePath": "staticwebassets/js/RandevuKayitSearch.js"
     },
     {
       "Id": "/Users/canerkapisiz/Desktop/Project/HastaKayitProjesi/wwwroot/js/site.js",

@@ -3,7 +3,7 @@
 <h2>Hastanın Randevularını Sorgula</h2>
 
 <!-- T.C. Kimlik Numarası ile randevuları sorgulamak için form -->
-<form method="get" action="@Url.Action("Sorgula", "RandevuKayit")">
+<form method="get" action="@Url.Action("Search", "RandevuKayit")">
     <div class="form-group mt-3">
         <!-- Kullanıcıdan T.C. Kimlik Numarası alınır -->
         <input type="text" class="form-control" id="TcKimlikNo" name="tcKimlikNo"
@@ -59,4 +59,4 @@
 </h6>
 
 <!-- Randevu sorgulama işlemi için JavaScript dosyasının eklenmesi -->
-<script src="~/js/RandevuKayitSorgula.js"></script>
+<script src="~/js/RandevuKayitSearch.js"></script>

@@ -16,22 +16,22 @@ namespace HastaKayitProjesi.Controllers
     // Randevu kaydı ile ilgili işlemlerin yapıldığı controller
     public class RandevuKayitController : Controller
     {
-        private readonly ApplicationDbContext _veritabani; // Veritabanı bağlamı
+        private readonly ApplicationDbContext _database; // Veritabanı bağlamı
         DateTime bugun = DateTime.Today; // Bugünün tarihi
 
         // Constructor, veritabanı bağlamını alır
-        public RandevuKayitController(ApplicationDbContext veritabani)
+        public RandevuKayitController(ApplicationDbContext database)
         {
-            _veritabani = veritabani;
+            _database = database;
         }
 
         // Randevu listeleme sayfası
-        public IActionResult Listele()
+        public IActionResult Index()
         {
             DateTime bugun = DateTime.Today; // Bugünün tarihi
 
             // Bugüne ait randevuları filtreleyerek getiriyoruz
-            var bugununRandevulari = _veritabani.RandevuKayitlar
+            var bugununRandevulari = _database.RandevuKayitlar
                 .Where(r => r.RandevuTarihi.Date == bugun) // Tarihe göre filtreleme
                 .Include(r => r.Hasta) // Hasta bilgisini de dahil et
                 .Include(r => r.Bolum) // Bölüm bilgisini de dahil et
@@ -44,21 +44,47 @@ namespace HastaKayitProjesi.Controllers
             return View(); // Görünümü döndürüyoruz
         }
 
+        public IActionResult Islemler()
+        {
+            ViewBag.Bolumler = _database.Bolumler.ToList();
+            ViewBag.Doktorlar = _database.Doktorlar.ToList();
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Islemler(int DoktorId)
+        {
+            // Bugünün tarihini al
+            var today = DateTime.Today;
+
+            ViewBag.Bolumler = _database.Bolumler.ToList();
+            ViewBag.Doktorlar = _database.Doktorlar.ToList();
+
+            ViewBag.Randevular = _database.RandevuKayitlar
+                .Where(r => r.DoktorId == DoktorId && r.RandevuTarihi.Date == today) // Bugüne göre filtreleme
+                .Include(r => r.Hasta) // Hasta bilgisi dahil
+                .Include(r => r.Bolum) // Hasta bilgisi dahil
+                .Include(r => r.Doktor) // Doktor bilgisi dahil
+                .ToList();
+
+            return View();
+        }
+
         // Randevu oluşturma sayfası için GET metod
         [HttpGet]
-        public IActionResult Ekle()
+        public IActionResult Create()
         {
             // Bölüm listesini view'e göndermek için ViewBag kullanıyoruz
-            ViewBag.Bolumler = _veritabani.Bolumler.ToList();
+            ViewBag.Bolumler = _database.Bolumler.ToList();
             return View(); // Görünümü döndürüyoruz
         }
 
         // Randevu oluşturma işlemi için POST metod
         [HttpPost]
-        public IActionResult Ekle(RandevuKayit model, string RandevuTarihi, string RandevuSaati)
+        public IActionResult Create(RandevuKayit model, string RandevuTarihi, string RandevuSaati)
         {
             // Hata oluşursa da dropdown (bölüm listesi) dolu olmalı
-            ViewBag.Bolumler = _veritabani.Bolumler.ToList();
+            ViewBag.Bolumler = _database.Bolumler.ToList();
 
             // Model doğrulama
             if (ModelState.IsValid)
@@ -77,7 +103,7 @@ namespace HastaKayitProjesi.Controllers
                         model.RandevuTarihi = randevuTarihiSaat;
 
                         // Aynı doktora aynı gün randevu olup olmadığını kontrol etme
-                        bool mevcutRandevu = _veritabani.RandevuKayitlar.Any(r =>
+                        bool mevcutRandevu = _database.RandevuKayitlar.Any(r =>
                             r.TcKimlikNo == model.TcKimlikNo &&
                             r.DoktorId == model.DoktorId &&
                             r.RandevuTarihi.Date == randevuTarihiSaat.Date);
@@ -90,9 +116,9 @@ namespace HastaKayitProjesi.Controllers
                         else
                         {
                             // Randevuyu veritabanına kaydet
-                            _veritabani.RandevuKayitlar.Add(model);
-                            _veritabani.SaveChanges(); // Değişiklikleri kaydet
-                            return RedirectToAction(nameof(Listele)); // Randevular sayfasına yönlendir
+                            _database.RandevuKayitlar.Add(model);
+                            _database.SaveChanges(); // Değişiklikleri kaydet
+                            return RedirectToAction(nameof(Index)); // Randevular sayfasına yönlendir
                         }
                     }
                     catch (Exception ex)
@@ -109,7 +135,7 @@ namespace HastaKayitProjesi.Controllers
 
         // Randevu sorgulama sayfası için GET metod
         [HttpGet]
-        public IActionResult Sorgula(string tcKimlikNo)
+        public IActionResult Search(string tcKimlikNo)
         {
             if (string.IsNullOrEmpty(tcKimlikNo)) // T.C. kimlik numarası boş ise
             {
@@ -120,7 +146,7 @@ namespace HastaKayitProjesi.Controllers
             ViewBag.IsFirstLoad = false; // İlk yükleme değil
 
             // T.C. kimlik numarasına göre randevuları filtreleyerek getiriyoruz
-            var randevular = _veritabani.RandevuKayitlar
+            var randevular = _database.RandevuKayitlar
                 .Where(r => r.TcKimlikNo == tcKimlikNo) // T.C. kimlik numarasına göre filtrele
                 .Include(r => r.Hasta) // Hasta bilgisi dahil
                 .Include(r => r.Bolum) // Bölüm bilgisi dahil
@@ -133,7 +159,7 @@ namespace HastaKayitProjesi.Controllers
 
         // Randevu silme sayfası için GET metod
         [HttpGet]
-        public IActionResult Sil(string tcKimlikNo)
+        public IActionResult Delete(string tcKimlikNo)
         {
             if (string.IsNullOrEmpty(tcKimlikNo)) // T.C. kimlik numarası boş ise
             {
@@ -144,7 +170,7 @@ namespace HastaKayitProjesi.Controllers
             ViewBag.IsFirstLoad = false; // İlk yükleme değil
 
             // T.C. kimlik numarasına göre randevuları filtreleyerek getiriyoruz
-            var randevular = _veritabani.RandevuKayitlar
+            var randevular = _database.RandevuKayitlar
                 .Where(r => r.TcKimlikNo == tcKimlikNo) // T.C. kimlik numarasına göre filtrele
                 .Include(r => r.Hasta) // Hasta bilgisi dahil
                 .Include(r => r.Bolum) // Bölüm bilgisi dahil
@@ -156,22 +182,22 @@ namespace HastaKayitProjesi.Controllers
         }
 
         // Silme işlemi için POST metod
-        [HttpPost, ActionName("Sil")]
-        public IActionResult Sil(int id)
+        [HttpPost, ActionName("Delete")]
+        public IActionResult Delete(int id)
         {
             // Randevuyu ID ile buluyoruz
-            var randevuKayit = _veritabani.RandevuKayitlar.Find(id);
+            var randevuKayit = _database.RandevuKayitlar.Find(id);
             if (randevuKayit == null)
             {
                 return NotFound(); // Randevu bulunamazsa 404 döndür
             }
 
             // Randevuyu veritabanından sil
-            _veritabani.RandevuKayitlar.Remove(randevuKayit);
-            _veritabani.SaveChanges(); // Değişiklikleri kaydet
+            _database.RandevuKayitlar.Remove(randevuKayit);
+            _database.SaveChanges(); // Değişiklikleri kaydet
 
             // Silme işlemi sonrası listeleme sayfasına yönlendir
-            return RedirectToAction(nameof(Listele));
+            return RedirectToAction(nameof(Index));
         }
 
         // Bölüm seçildiğinde o bölüme ait doktorları JSON olarak döndüren metod
@@ -179,7 +205,7 @@ namespace HastaKayitProjesi.Controllers
         public JsonResult GetDoktorlarByBolum(int bolumId)
         {
             // Bölüm ID'ye göre doktorları filtreleyerek getiriyoruz
-            var doktorlar = _veritabani.Doktorlar
+            var doktorlar = _database.Doktorlar
                 .Where(d => d.BolumId == bolumId)
                 .Select(d => new { d.Id, d.AdSoyad }) // Doktorun ID ve AdSoyad bilgilerini al
                 .ToList();
@@ -200,7 +226,7 @@ namespace HastaKayitProjesi.Controllers
                 }
 
                 // Seçilen tarihteki randevuları getir
-                var randevuSaatleri = _veritabani.RandevuKayitlar
+                var randevuSaatleri = _database.RandevuKayitlar
                     .Where(r => r.DoktorId == doktorId && r.RandevuTarihi.Date == secilenTarih.Date)
                     .Select(r => r.RandevuTarihi.ToString("HH:mm")) // Saat ve dakika formatında döndür
                     .ToList();
@@ -212,6 +238,24 @@ namespace HastaKayitProjesi.Controllers
                 // Hata durumunda kullanıcıya bilgi verme
                 return Json(new { Error = "Bir hata oluştu. Lütfen daha sonra tekrar deneyin." });
             }
+        }
+
+        [HttpPost]
+        public IActionResult TwoCreate(RandevuKayit model, string RandevuTarihi, string RandevuSaati)
+        {
+            ViewBag.Bolumler = _database.Bolumler.ToList();
+
+            if (ModelState.IsValid)
+            {
+                DateTime randevuTarihiSaat = DateTime.Parse($"{RandevuTarihi} {RandevuSaati}");
+                model.RandevuTarihi = randevuTarihiSaat;
+
+                _database.RandevuKayitlar.Add(model);
+                _database.SaveChanges();
+                return RedirectToAction(nameof(Islemler));
+            }
+
+            return View(model);
         }
     }
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "o6l3+5mY7EsJj6pK6uLauTJMtQvLnDVk/dtxcqXgZ5k=",
+  "Hash": "tDxX2maE8jlH/QvCwbwEIUdhFAImXQwbDz/6kRmXlWI=",
   "Source": "HastaKayitProjesi",
   "BasePath": "_content/HastaKayitProjesi",
   "Mode": "Default",
@@ -143,12 +143,33 @@
       "OriginalItemSpec": "wwwroot/js/RandevuKayitCreate.js"
     },
     {
-      "Identity": "/Users/canerkapisiz/Desktop/Project/HastaKayitProjesi/wwwroot/js/RandevuKayitSorgula.js",
+      "Identity": "/Users/canerkapisiz/Desktop/Project/HastaKayitProjesi/wwwroot/js/RandevuKayitIslemler.js",
       "SourceId": "HastaKayitProjesi",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/canerkapisiz/Desktop/Project/HastaKayitProjesi/wwwroot/",
       "BasePath": "_content/HastaKayitProjesi",
-      "RelativePath": "js/RandevuKayitSorgula#[.{fingerprint}]?.js",
+      "RelativePath": "js/RandevuKayitIslemler#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "aim8z1j648",
+      "Integrity": "DoVmIUBd6rTafjKP28jXHmvYODgrSdHOCwhWUwsf6vI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/RandevuKayitIslemler.js"
+    },
+    {
+      "Identity": "/Users/canerkapisiz/Desktop/Project/HastaKayitProjesi/wwwroot/js/RandevuKayitSearch.js",
+      "SourceId": "HastaKayitProjesi",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/canerkapisiz/Desktop/Project/HastaKayitProjesi/wwwroot/",
+      "BasePath": "_content/HastaKayitProjesi",
+      "RelativePath": "js/RandevuKayitSearch#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -161,7 +182,7 @@
       "Integrity": "3bCptVICqpVt5W7zUPiwf5v/1U1cAh8H7Q3TNo14MYM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/js/RandevuKayitSorgula.js"
+      "OriginalItemSpec": "wwwroot/js/RandevuKayitSearch.js"
     },
     {
       "Identity": "/Users/canerkapisiz/Desktop/Project/HastaKayitProjesi/wwwroot/js/site.js",
@@ -1816,7 +1837,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 05 Dec 2024 09:31:17 GMT"
+          "Value": "Sun, 08 Dec 2024 19:43:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1853,7 +1874,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 05 Dec 2024 09:31:17 GMT"
+          "Value": "Sun, 08 Dec 2024 19:43:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1876,8 +1897,90 @@
       ]
     },
     {
-      "Route": "js/RandevuKayitSorgula.js",
-      "AssetFile": "/Users/canerkapisiz/Desktop/Project/HastaKayitProjesi/wwwroot/js/RandevuKayitSorgula.js",
+      "Route": "js/RandevuKayitIslemler.aim8z1j648.js",
+      "AssetFile": "/Users/canerkapisiz/Desktop/Project/HastaKayitProjesi/wwwroot/js/RandevuKayitIslemler.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "939"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DoVmIUBd6rTafjKP28jXHmvYODgrSdHOCwhWUwsf6vI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 08 Dec 2024 19:11:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "aim8z1j648"
+        },
+        {
+          "Name": "label",
+          "Value": "js/RandevuKayitIslemler.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-DoVmIUBd6rTafjKP28jXHmvYODgrSdHOCwhWUwsf6vI="
+        }
+      ]
+    },
+    {
+      "Route": "js/RandevuKayitIslemler.js",
+      "AssetFile": "/Users/canerkapisiz/Desktop/Project/HastaKayitProjesi/wwwroot/js/RandevuKayitIslemler.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "939"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DoVmIUBd6rTafjKP28jXHmvYODgrSdHOCwhWUwsf6vI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 08 Dec 2024 19:11:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-DoVmIUBd6rTafjKP28jXHmvYODgrSdHOCwhWUwsf6vI="
+        }
+      ]
+    },
+    {
+      "Route": "js/RandevuKayitSearch.js",
+      "AssetFile": "/Users/canerkapisiz/Desktop/Project/HastaKayitProjesi/wwwroot/js/RandevuKayitSearch.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1913,8 +2016,8 @@
       ]
     },
     {
-      "Route": "js/RandevuKayitSorgula.tgs3q9maz4.js",
-      "AssetFile": "/Users/canerkapisiz/Desktop/Project/HastaKayitProjesi/wwwroot/js/RandevuKayitSorgula.js",
+      "Route": "js/RandevuKayitSearch.tgs3q9maz4.js",
+      "AssetFile": "/Users/canerkapisiz/Desktop/Project/HastaKayitProjesi/wwwroot/js/RandevuKayitSearch.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1949,7 +2052,7 @@
         },
         {
           "Name": "label",
-          "Value": "js/RandevuKayitSorgula.js"
+          "Value": "js/RandevuKayitSearch.js"
         },
         {
           "Name": "integrity",

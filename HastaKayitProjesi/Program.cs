@@ -37,7 +37,7 @@ app.UseStaticFiles(); // Statik dosyaları sunmak için doğru kullanım
 // 9. Varsayılan controller route yapılandırması
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=RandevuKayit}/{action=Listele}/{id?}"
+    pattern: "{controller=RandevuKayit}/{action=Index}/{id?}"
 );
 
 // 10. Uygulamayı çalıştır

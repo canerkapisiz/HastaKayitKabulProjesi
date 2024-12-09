@@ -52,24 +52,36 @@
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\RandevuKayitCreate.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-qiTlzDFOygjBgCPW2B2vM3Ayk8MAkwJIVB8oBQ1Ur9A="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"13039"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022qiTlzDFOygjBgCPW2B2vM3Ayk8MAkwJIVB8oBQ1Ur9A=\u0022"},{"Name":"Last-Modified","Value":"Thu, 05 Dec 2024 09:31:17 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"13039"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022qiTlzDFOygjBgCPW2B2vM3Ayk8MAkwJIVB8oBQ1Ur9A=\u0022"},{"Name":"Last-Modified","Value":"Sun, 08 Dec 2024 19:43:53 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/HastaKayitProjesi/js/RandevuKayitCreate.qjtbttym1b.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\RandevuKayitCreate.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"qjtbttym1b"},{"Name":"integrity","Value":"sha256-qiTlzDFOygjBgCPW2B2vM3Ayk8MAkwJIVB8oBQ1Ur9A="},{"Name":"label","Value":"_content/HastaKayitProjesi/js/RandevuKayitCreate.js"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"13039"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022qiTlzDFOygjBgCPW2B2vM3Ayk8MAkwJIVB8oBQ1Ur9A=\u0022"},{"Name":"Last-Modified","Value":"Thu, 05 Dec 2024 09:31:17 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"13039"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022qiTlzDFOygjBgCPW2B2vM3Ayk8MAkwJIVB8oBQ1Ur9A=\u0022"},{"Name":"Last-Modified","Value":"Sun, 08 Dec 2024 19:43:53 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/HastaKayitProjesi/js/RandevuKayitSorgula.js">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\RandevuKayitSorgula.js'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/HastaKayitProjesi/js/RandevuKayitIslemler.aim8z1j648.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\RandevuKayitIslemler.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"aim8z1j648"},{"Name":"integrity","Value":"sha256-DoVmIUBd6rTafjKP28jXHmvYODgrSdHOCwhWUwsf6vI="},{"Name":"label","Value":"_content/HastaKayitProjesi/js/RandevuKayitIslemler.js"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"939"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022DoVmIUBd6rTafjKP28jXHmvYODgrSdHOCwhWUwsf6vI=\u0022"},{"Name":"Last-Modified","Value":"Sun, 08 Dec 2024 19:11:05 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/HastaKayitProjesi/js/RandevuKayitIslemler.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\RandevuKayitIslemler.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-DoVmIUBd6rTafjKP28jXHmvYODgrSdHOCwhWUwsf6vI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"939"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022DoVmIUBd6rTafjKP28jXHmvYODgrSdHOCwhWUwsf6vI=\u0022"},{"Name":"Last-Modified","Value":"Sun, 08 Dec 2024 19:11:05 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/HastaKayitProjesi/js/RandevuKayitSearch.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\RandevuKayitSearch.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-3bCptVICqpVt5W7zUPiwf5v/1U1cAh8H7Q3TNo14MYM="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"914"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u00223bCptVICqpVt5W7zUPiwf5v/1U1cAh8H7Q3TNo14MYM=\u0022"},{"Name":"Last-Modified","Value":"Thu, 05 Dec 2024 09:28:09 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/HastaKayitProjesi/js/RandevuKayitSorgula.tgs3q9maz4.js">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\RandevuKayitSorgula.js'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/HastaKayitProjesi/js/RandevuKayitSearch.tgs3q9maz4.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\RandevuKayitSearch.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"tgs3q9maz4"},{"Name":"integrity","Value":"sha256-3bCptVICqpVt5W7zUPiwf5v/1U1cAh8H7Q3TNo14MYM="},{"Name":"label","Value":"_content/HastaKayitProjesi/js/RandevuKayitSorgula.js"}]]]></EndpointProperties>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"tgs3q9maz4"},{"Name":"integrity","Value":"sha256-3bCptVICqpVt5W7zUPiwf5v/1U1cAh8H7Q3TNo14MYM="},{"Name":"label","Value":"_content/HastaKayitProjesi/js/RandevuKayitSearch.js"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"914"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u00223bCptVICqpVt5W7zUPiwf5v/1U1cAh8H7Q3TNo14MYM=\u0022"},{"Name":"Last-Modified","Value":"Thu, 05 Dec 2024 09:28:09 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/HastaKayitProjesi/js/site.js">

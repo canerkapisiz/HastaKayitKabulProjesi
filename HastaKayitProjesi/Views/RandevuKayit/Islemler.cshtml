@@ -1,0 +1,345 @@
+@model IEnumerable<HastaKayitProjesi.Models.RandevuKayit>
+@{
+    var bolumId = 0; // Varsayılan değer
+    var doktorId = 0; // Varsayılan değer
+}
+<div class="container mt-4">
+    <div class="row">
+        <!-- Sol Bölüm: Randevu İşlemleri -->
+        <div class="col-md-5">
+            <h4 class="mb-4">Doktor Hasta İşlemleri</h4>
+            <div class="d-flex flex-column align-items-start">
+                <form asp-action="Islemler" method="post" id="doktorForm">
+                    <!-- Bölüm Seçimi -->
+                    <div class="form-group mt-3">
+                        <select class="form-control" id="BolumId" name="BolumId" required>
+                            <option value="">Hasta İçin Bölüm Seçiniz...</option>
+                            @if (ViewBag.Bolumler != null)
+                            {
+                                @* ViewBag.Bolumler'den gelen bölüm listesi ile seçim yapılır *@
+                                foreach (var bolum in ViewBag.Bolumler)
+                                {
+                                    <option value="@bolum.Id">@bolum.BolumAdi</option>
+                                }
+                            }
+                        </select>
+                    </div>
+
+                    <!-- Doktor Seçimi -->
+                    <div class="form-group mt-3">
+                        <select class="form-control" id="DoktorId" name="DoktorId" required>
+                            <option value="">Hasta İçin Doktor Seçiniz...</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-success mt-3">Doktorun Randevularını Göster</button>
+                </form>
+                <button id="eklemeButon" type="button" class="btn btn-primary mt-3" data-bs-toggle="modal"
+                    data-bs-target="#popupModal" disabled>
+                    Doktora Hasta Ekle
+                </button>
+            </div>
+        </div>
+
+        <!-- Sağ Bölüm: İçerik -->
+        <div class="col-md-7">
+            @if (ViewBag.Randevular != null)
+            {
+                @foreach (var randevu in ViewBag.Randevular)
+                {
+                    <div class="row">
+                        <div class="col-sm-12 col-md-5">
+                            <h3 class="text-danger">Bölüm Adı: @randevu.Bolum.BolumAdi</h3>
+                        </div>
+                        <div class="col-sm-12 col-md-7">
+                            <h3 class="text-danger">Doktor Adı: @randevu.Doktor.AdSoyad</h3>
+                        </div>
+                    </div>
+                    break;
+                }
+            }
+            <table class="table table-bordered mb-4">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Hasta Adı</th> <!-- Hasta adı başlığı -->
+                        <th>Randevu Saati</th> <!-- Randevu tarihi başlığı -->
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (ViewBag.Randevular != null)
+                    {
+                        @foreach (var randevu in ViewBag.Randevular)
+                        {
+                            <!-- Her randevu için bir satır oluştur -->
+                            <tr>
+                                <td>@randevu.Hasta.AdSoyad</td> <!-- Hastanın adı -->
+                                <td>@randevu.RandevuTarihi.ToString("HH:mm")</td> <!-- Randevu saati -->
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="2" class="text-center">Bugüne ait randevu bulunamadı.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="popupModal" tabindex="-1" aria-labelledby="popupModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 750px; height: 750px;">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <!-- Model doğrulama hatası varsa, hata mesajlarını göster -->
+                    <div class="alert alert-danger">
+                        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                        {
+                            <p>@error.ErrorMessage</p>
+                        }
+                    </div>
+                }
+
+                <!-- Form Başlangıcı -->
+                <form asp-action="TwoCreate" method="post">
+                    <!-- T.C. Kimlik Numarası Giriş Alanı -->
+                    <div class="form-group mt-3">
+                        <input type="text" class="form-control" id="TcKimlikNo" name="TcKimlikNo"
+                            placeholder="T.C. Kimlik Numarası Giriniz" required />
+                    </div>
+
+
+                    <div class="form-group mt-3">
+                        <select class="form-control" id="BolumIdi" name="BolumId" required>
+                            @foreach (var bolum in ViewBag.Bolumler)
+                            {
+                                <option value="@bolum.Id">@bolum.BolumAdi</option>
+                            }
+                        </select>
+                    </div>
+
+                    <!-- Doktor Seçimi -->
+                    <div class="form-group mt-3">
+                        <select class="form-control" id="DoktorIdi" name="DoktorId" required>
+                            @foreach (var doktor in ViewBag.Doktorlar)
+                            {
+                                <option value="@doktor.Id">@doktor.AdSoyad</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <input type="text" class="form-control" id="randevuTarihtutmasi" name="RandevuTarihi" readonly
+                            required />
+                    </div>
+
+
+                    <!-- Saat Seçimi ve Modal Butonu -->
+                    <div class="form-group mt-3">
+                        <input type="text" class="form-control" id="RandevuSaati" name="RandevuSaati" readonly
+                            required />
+                        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal"
+                            data-bs-target="#saatSecModal" id="saatAcmaButon">
+                            Saat Seç
+                        </button>
+                    </div>
+
+                    <!-- Randevu Ekle Butonu -->
+                    <button type="submit" class="btn btn-success mt-3">Randevuyu Ekle</button>
+                </form>
+
+                <!-- Saat Seçim Modalı -->
+                <div class="modal fade" id="saatSecModal" tabindex="-1" aria-labelledby="saatSecModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="saatSecModalLabel">Randevu Saati Seç</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
+                                <!-- Saat Seçim Tablosu -->
+                                <table class="table table-bordered text-center">
+                                    <thead>
+                                        <tr>
+                                            <th>09:00</th>
+                                            <th>10:00</th>
+                                            <th>11:00</th>
+                                            <th>13:00</th>
+                                            <th>14:00</th>
+                                            <th>15:00</th>
+                                            <th>16:00</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="saatSecenekleri"></tbody>
+                                </table>
+                            </div>
+                            <div class="d-flex flex-column align-items-center my-3">
+                                <!-- Grup 1: Siyah Buton ve Açıklama (Dolmuş saatler) -->
+                                <div class="d-flex align-items-center mb-3">
+                                    <button class="btn btn-dark btn-sm" disabled></button>
+                                    <span class="text-muted ms-2" style="font-size: 0.9rem;">Siyah randevu saatleri
+                                        doldu.</span>
+                                </div>
+
+                                <!-- Grup 2: Beyaz Buton ve Açıklama (Boş saatler) -->
+                                <div class="d-flex align-items-center">
+                                    <button class="btn btn-outline-secondary btn-sm" disabled></button>
+                                    <span class="text-muted ms-2" style="font-size: 0.9rem;">Beyaz randevu saatlerinden
+                                        birini
+                                        seçebilirsiniz.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let bolumId = 0;
+    let doktorId = 0;
+
+    document.getElementById("BolumId").addEventListener("change", function () {
+        bolumId = this.value; // Bölüm ID'sini al
+        console.log(bolumId);
+    });
+
+    document.getElementById("DoktorId").addEventListener("change", function () {
+        doktorId = this.value; // Doktor ID'sini al
+        console.log(doktorId);
+        document.getElementById("eklemeButon").disabled = false;
+    });
+
+    document.getElementById("eklemeButon").addEventListener("click", function () {
+        console.log("doktor idisi" + doktorId);
+        var selectElement = document.getElementById("BolumIdi");
+        for (var i = 0; i < selectElement.options.length; i++) {
+            if (selectElement.options[i].value == bolumId) {
+                selectElement.options[i].selected = true;
+                break;  // Eşleşen item bulunduktan sonra döngüden çık
+            }
+        }
+        selectElement.value = bolumId;
+        var doktorElement = document.getElementById("DoktorIdi");
+        for (var i = 0; i < doktorElement.options.length; i++) {
+            if (doktorElement.options[i].value == doktorId) {
+                doktorElement.options[i].selected = true;
+                break;  // Eşleşen item bulunduktan sonra döngüden çık
+            }
+        }
+        doktorElement.value = doktorId;
+    });
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const saatSecenekleriContainer = document.getElementById("saatSecenekleri");
+
+        const randevuSaatiInput = document.getElementById("RandevuSaati");
+
+        const saatAcmaButon = document.getElementById("saatAcmaButon");
+
+        const zamanlar = [
+            ["09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00"],
+            ["09:10", "10:10", "11:10", "13:10", "14:10", "15:10", "16:10"],
+            ["09:20", "10:20", "11:20", "13:20", "14:20", "15:20", "16:20"],
+            ["09:30", "10:30", "11:30", "13:30", "14:30", "15:30", "16:30"],
+            ["09:40", "10:40", "11:40", "13:40", "14:40", "15:40", "16:40"],
+            ["09:50", "10:50", "11:50", "13:50", "14:50", "15:50", "16:50"],
+        ];
+
+
+
+
+        let bugunTarih = new Date();
+        const formattedDatet = formatDatett(bugunTarih.getDate(), bugunTarih.getMonth() + 1, bugunTarih.getFullYear());
+        function formatDatett(day, month, year) {
+            // Gün ve ay değerlerini iki haneli yapmak için
+            const formattedDay = day.toString().padStart(2, '0');
+            const formattedMonth = month.toString().padStart(2, '0');
+            return `${year}-${formattedMonth}-${formattedDay}`; // YYYY-MM-DD formatı
+        }
+
+        document.getElementById('randevuTarihtutmasi').value = bugunTarih.toISOString().split('T')[0]; // YYYY-MM-DD formatında ayarlanır.
+
+
+        zamanlar.forEach((satir) => {
+            const tr = document.createElement("tr");
+            satir.forEach((zaman) => {
+                const td = document.createElement("td");
+                const button = document.createElement("button");
+                button.type = "button";
+                button.className = "btn btn-outline-secondary btn-sm";
+                button.textContent = zaman;
+
+
+                button.addEventListener("click", function () {
+                    randevuSaatiInput.value = zaman;
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('saatSecModal'));
+                    modal.hide();
+                });
+
+                td.appendChild(button);
+                tr.appendChild(td);
+            });
+            saatSecenekleriContainer.appendChild(tr);
+        });
+
+
+        saatAcmaButon.addEventListener("click", function () {
+
+
+            fetch(`/RandevuKayit/GetRandevuSaatleri?doktorId=${doktorId}&tarih=${formattedDatet}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Veri alınamadı: " + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data && data.length > 0) {
+                        // Saatleri döngüyle işleme
+                        data.forEach(saat => {
+                            // `saatSecenekleriContainer` içinde tüm td'leri al
+                            const tdElements = saatSecenekleriContainer.querySelectorAll("td");
+
+                            tdElements.forEach(td => {
+                                // Eğer td'nin içeriği gelen saatle eşleşiyorsa
+                                if (td.textContent.trim() === saat) {
+                                    const button = td.querySelector(".btn-outline-secondary");
+
+                                    if (button) {
+                                        // Sınıfı siyah yapmak için değiştirme
+                                        button.classList.remove("btn-outline-secondary"); // Eski sınıfı kaldır
+                                        button.classList.add("btn-dark"); // Siyah buton sınıfını ekle
+
+                                        // Butonu tıklanamaz hale getirme
+                                        button.disabled = true; // Tıklanamaz yapar
+                                    }
+                                }
+                            });
+                        });
+                    } else {
+                        console.log("Veri yok veya boş.");
+                    }
+                })
+                .catch(error => console.error("Hata:", error));
+        });
+    });
+</script>
+
+<script src="~/js/RandevuKayitIslemler.js"></script>

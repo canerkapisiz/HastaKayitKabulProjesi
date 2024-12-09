@@ -8,16 +8,16 @@ namespace HastaKayitProjesi.Controllers
 {
     public class DoktorController : Controller
     {
-        private readonly ApplicationDbContext _veritabani; // Veritabanı bağlantısını temsil eder.
+        private readonly ApplicationDbContext _database; // Veritabanı bağlantısını temsil eder.
 
-        public DoktorController(ApplicationDbContext veritabani) // Constructor: Veritabanı nesnesini denetleyiciye enjekte eder.
+        public DoktorController(ApplicationDbContext database) // Constructor: Veritabanı nesnesini denetleyiciye enjekte eder.
         {
-            _veritabani = veritabani; // Veritabanı bağlantısını sınıf seviyesinde saklıyoruz.
+            _database = database; // Veritabanı bağlantısını sınıf seviyesinde saklıyoruz.
         }
 
-        public IActionResult Listele() // Doktorları listeleyen metod.
+        public IActionResult Index() // Doktorları listeleyen metod.
         {
-            var doktorlar = _veritabani.Doktorlar // Veritabanındaki doktorları al.
+            var doktorlar = _database.Doktorlar // Veritabanındaki doktorları al.
                 .Include(d => d.Bolum) // Her doktorun bölüm bilgisi ile birleştir.
                 .Select(d => new DoktorViewModel // Doktor bilgilerini bir görünüm modeliyle eşleştir.
                 {
@@ -27,7 +27,7 @@ namespace HastaKayitProjesi.Controllers
             return View(doktorlar); // Doktor listesiyle View döndür.
         }
 
-        public IActionResult Ekle() // Yeni doktor ekleme formunu gösteren metod.
+        public IActionResult Create() // Yeni doktor ekleme formunu gösteren metod.
         {
             ViewBag.BolumListesi = BolumSecimListesiOlustur(); // Bölüm listesi ViewBag'e aktarılır.
             return View(); // View döndür.
@@ -35,19 +35,19 @@ namespace HastaKayitProjesi.Controllers
 
         [HttpPost] // Bu metod HTTP POST istekleri için kullanılır.
         [ValidateAntiForgeryToken] // CSRF saldırılarına karşı koruma sağlar.
-        public IActionResult Ekle(Doktor doktor) // Yeni bir doktor ekleyen metod.
+        public IActionResult Create(Doktor doktor) // Yeni bir doktor ekleyen metod.
         {
-            doktor.Bolum = _veritabani.Bolumler // Doktorun bağlı olduğu bölümü bul.
+            doktor.Bolum = _database.Bolumler // Doktorun bağlı olduğu bölümü bul.
                 .FirstOrDefault(b => b.Id == doktor.BolumId);
 
-            _veritabani.Doktorlar.Add(doktor); // Yeni doktoru veritabanına ekle.
-            _veritabani.SaveChanges(); // Değişiklikleri kaydet.
-            return RedirectToAction(nameof(Listele)); // Listeleme sayfasına yönlendir.
+            _database.Doktorlar.Add(doktor); // Yeni doktoru veritabanına ekle.
+            _database.SaveChanges(); // Değişiklikleri kaydet.
+            return RedirectToAction(nameof(Index)); // Listeleme sayfasına yönlendir.
         }
 
         private SelectList BolumSecimListesiOlustur() // Drop-down list için bölüm listesini oluşturan metod.
         {
-            var bolumler = _veritabani.Bolumler // Veritabanından tüm bölümleri al.
+            var bolumler = _database.Bolumler // Veritabanından tüm bölümleri al.
                 .OrderBy(b => b.BolumAdi) // Bölümleri alfabetik sıraya göre sırala.
                 .ToList();
             return new SelectList(bolumler, "Id", "BolumAdi"); // Bölüm listesini SelectList olarak döndür.

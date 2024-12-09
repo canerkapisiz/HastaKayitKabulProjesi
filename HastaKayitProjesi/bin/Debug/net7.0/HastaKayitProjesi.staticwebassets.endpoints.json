@@ -356,7 +356,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 05 Dec 2024 09:31:17 GMT"
+          "Value": "Sun, 08 Dec 2024 19:43:53 GMT"
         }
       ],
       "EndpointProperties": [
@@ -393,7 +393,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 05 Dec 2024 09:31:17 GMT"
+          "Value": "Sun, 08 Dec 2024 19:43:53 GMT"
         }
       ],
       "EndpointProperties": [
@@ -412,8 +412,90 @@
       ]
     },
     {
-      "Route": "js/RandevuKayitSorgula.js",
-      "AssetFile": "js/RandevuKayitSorgula.js",
+      "Route": "js/RandevuKayitIslemler.aim8z1j648.js",
+      "AssetFile": "js/RandevuKayitIslemler.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "939"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DoVmIUBd6rTafjKP28jXHmvYODgrSdHOCwhWUwsf6vI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 08 Dec 2024 19:11:05 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "aim8z1j648"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-DoVmIUBd6rTafjKP28jXHmvYODgrSdHOCwhWUwsf6vI="
+        },
+        {
+          "Name": "label",
+          "Value": "js/RandevuKayitIslemler.js"
+        }
+      ]
+    },
+    {
+      "Route": "js/RandevuKayitIslemler.js",
+      "AssetFile": "js/RandevuKayitIslemler.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "939"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DoVmIUBd6rTafjKP28jXHmvYODgrSdHOCwhWUwsf6vI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 08 Dec 2024 19:11:05 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-DoVmIUBd6rTafjKP28jXHmvYODgrSdHOCwhWUwsf6vI="
+        }
+      ]
+    },
+    {
+      "Route": "js/RandevuKayitSearch.js",
+      "AssetFile": "js/RandevuKayitSearch.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -449,8 +531,8 @@
       ]
     },
     {
-      "Route": "js/RandevuKayitSorgula.tgs3q9maz4.js",
-      "AssetFile": "js/RandevuKayitSorgula.js",
+      "Route": "js/RandevuKayitSearch.tgs3q9maz4.js",
+      "AssetFile": "js/RandevuKayitSearch.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -489,7 +571,7 @@
         },
         {
           "Name": "label",
-          "Value": "js/RandevuKayitSorgula.js"
+          "Value": "js/RandevuKayitSearch.js"
         }
       ]
     },
