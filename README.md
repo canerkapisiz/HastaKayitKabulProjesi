@@ -16,7 +16,7 @@ mümkündür.
 
 # Proje Görselleri
 ## Günlük Doktor Randevuları Listeleme
-Günlük Doktor| Randevuları Listeleme |
+Günlük Doktor Randevuları Listeleme | Günlük Doktor Randevuları Listeleme |
 ------------ |------------ |
 ![](Photos/1.png) | ![](Photos/2.png) |
 
