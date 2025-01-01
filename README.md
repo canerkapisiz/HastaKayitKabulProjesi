@@ -21,6 +21,7 @@ Günlük Doktor Randevuları Listeleme | Günlük Doktor Randevuları Listeleme 
 ![](Photos/1.png) | ![](Photos/2.png) |
 
 ## Bölüm Listeleme ve Ekleme
+Bölüm Listeleme ve Ekleme | Bölüm Listeleme ve Ekleme | Bölüm Listeleme ve Ekleme | 
 ------------ |------------ | ------------ |
 ![](Photos/3.png) | ![](Photos/4.png) | ![](Photos/5.png) |
 
