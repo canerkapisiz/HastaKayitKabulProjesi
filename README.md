@@ -52,3 +52,13 @@ Randevu Silme | Randevu Sorgulama |
 Doktorun Günlük Randevu Listeleme | Doktorun Günlük Randevu Listeleme | Doktora Hasta Kaydı Açma | Doktora Hasta Kaydı Açma | 
 ------------ |------------ | ------------ |------------ |
 ![](Photos/17.png) | ![](Photos/18.png) | ![](Photos/19.png) |![](Photos/20.png) |
+
+
+
+# Database Görselleri
+Bölüm Tablosu | Doktor Tablosu | Hasta Tablosu | Randevu Kayit Tablosu | 
+------------ |------------ | ------------ |------------ |
+![](Photos/21.png) | ![](Photos/22.png) | ![](Photos/23.png) |![](Photos/24.png) |
+
+
+
