@@ -14,7 +14,19 @@ mümkündür.
     
 
 
-## Proje Görselleri
-Günlük Doktor Randevuları | Bölüm Ekleme ve Listeleme |
------------- | ------------ | ------------ |------------ |------------ |
-![](Photos/1.png) | ![](Photos/2.png) | ![](Photos/3.png) | ![](Photos/4.png) | ![](Photos/5.png) |
+# Günlük Doktor Randevuları
+
+## Bölüm Ekleme
+
+Bu bölümde doktorların ve bölümlerin eklendiği ekranlar bulunmaktadır.
+
+![Bölüm Ekleme Ekranı](Photos/1.png)  
+![Bölüm Listesi](Photos/2.png)  
+
+## Günlük Randevu Listeleme
+
+Günlük doktor randevularının listelendiği ekran görüntüleri:
+
+![Randevu Listesi 1](Photos/3.png)  
+![Randevu Listesi 2](Photos/4.png)  
+![Randevu Listesi 3](Photos/5.png)  
