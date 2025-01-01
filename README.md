@@ -1,4 +1,4 @@
-## Hasta Kayit Kabul Projesi
+# Hasta Kayit Kabul Projesi
 * .NET Core ve SQL ile geliştirdiğim Hasta Kayıt ve Kabul Sistemi, hastaneye yeni bölümler eklenmesine ve bu bölümlere doktor atanmasına olanak tanır. Hastalar, TC Kimlik Numarasını birincil anahtar olarak kullanarak sisteme kaydedilebilir. Bölüm ve doktor seçimiyle tarih belirlenerek randevu oluşturulabilir. Randevular günlük ya da tüm kayıtlar olarak sorgulanabilir ve gerektiğinde iptal edilebilir.
 
 
