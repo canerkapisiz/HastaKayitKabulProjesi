@@ -16,5 +16,5 @@ mümkündür.
 
 ## Proje Görselleri
 Günlük Doktor Randevuları | | Bölüm Ekleme ve Listeleme |
------------- | ------------ | ------------ | ------------ | ------------ | ------------ | 
-![](Photos/1.png) | ![](Photos/2.png) | ![](Photos/3.png) | ![](Photos/.png) | ![](Photos/5.png) | ![](Photos/6.png) |
+------------ | ------------ | 
+![](Photos/1.png)  ![](Photos/2.png)  ![](Photos/3.png) | ![](Photos/.png)  ![](Photos/5.png)  ![](Photos/6.png) |
