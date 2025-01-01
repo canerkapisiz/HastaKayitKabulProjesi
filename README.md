@@ -25,5 +25,11 @@ Bölüm Listeleme ve Ekleme | Bölüm Listeleme ve Ekleme | Bölüm Listeleme ve
 ------------ |------------ | ------------ |
 ![](Photos/3.png) | ![](Photos/4.png) | ![](Photos/5.png) |
 
+## Doktor Listeleme ve Ekleme
+Doktor Listeleme ve Ekleme | Doktor Listeleme ve Ekleme | Doktor Listeleme ve Ekleme | 
+------------ |------------ | ------------ |
+![](Photos/6.png) | ![](Photos/7.png) | ![](Photos/8.png) |
+
+
 
 
