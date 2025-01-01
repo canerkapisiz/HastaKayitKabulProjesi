@@ -30,6 +30,18 @@ Doktor Listeleme ve Ekleme | Doktor Listeleme ve Ekleme | Doktor Listeleme ve Ek
 ------------ |------------ | ------------ |
 ![](Photos/6.png) | ![](Photos/7.png) | ![](Photos/8.png) |
 
+## Hasta Listeleme ve Ekleme
+Hasta Listeleme ve Ekleme | Hasta Listeleme ve Ekleme | Hasta Listeleme ve Ekleme | 
+------------ |------------ | ------------ |
+![](Photos/9.png) | ![](Photos/10.png) | ![](Photos/11.png) |
+
+## Randevu İşlemleri 
+Randevu Ekleme | Randevu Ekleme | Randevu Ekleme | 
+------------ |------------ | ------------ |
+![](Photos/12.png) | ![](Photos/13.png) | ![](Photos/14.png) |
+Randevu Silme | Randevu Sorgulama | 
+![](Photos/15.png) | ![](Photos/16.png) |
+
 
 
 
