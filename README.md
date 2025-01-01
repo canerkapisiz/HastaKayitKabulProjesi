@@ -42,6 +42,9 @@ Randevu Ekleme | Randevu Ekleme | Randevu Ekleme |
 Randevu Silme | Randevu Sorgulama | 
 ![](Photos/15.png) | ![](Photos/16.png) |
 
-
+## Randevu İşlemleri 2
+Doktor Günlük Randevu Listeleme | Doktor Günlük Randevu Listeleme | Doktora Hasta Kaydı Açma | Doktora Hasta Kaydı Açma | 
+------------ |------------ | ------------ |------------ |
+![](Photos/17.png) | ![](Photos/18.png) | ![](Photos/19.png) |![](Photos/20.png) |
 
 
