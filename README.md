@@ -15,6 +15,6 @@ mümkündür.
 
 
 ## Proje Görselleri
-Günlük Doktor Randevuları || Bölüm Ekleme ve Listeleme |||
+Günlük Doktor Randevuları | Bölüm Ekleme ve Listeleme |
 ------------ | ------------ | ------------ |------------ |------------ |
 ![](Photos/1.png) | ![](Photos/2.png) | ![](Photos/3.png) | ![](Photos/4.png) | ![](Photos/5.png) |
