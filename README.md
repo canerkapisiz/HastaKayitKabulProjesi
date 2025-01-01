@@ -23,11 +23,17 @@ Günlük Doktor Randevuları Listeleme | Günlük Doktor Randevuları Listeleme 
 ![](Photos/1.png) | ![](Photos/2.png) |
 
 ## Bölüm Listeleme ve Ekleme
+* Hastaneye yeni bölümler eklenebilir, ancak mevcut bölümler yeniden eklenemez.
+* Hastanedeki mevcut bölümler listelenebilir.
+
 Bölüm Listeleme ve Ekleme | Bölüm Listeleme ve Ekleme | Bölüm Listeleme ve Ekleme | 
 ------------ |------------ | ------------ |
 ![](Photos/3.png) | ![](Photos/4.png) | ![](Photos/5.png) |
 
 ## Doktor Listeleme ve Ekleme
+* Hasteneye bölüm seçilerek doktor eklenebilir.
+* Her bölümün doktorları kendi aralarında gruplanarak listelenebilir.
+
 Doktor Listeleme ve Ekleme | Doktor Listeleme ve Ekleme | Doktor Listeleme ve Ekleme | 
 ------------ |------------ | ------------ |
 ![](Photos/6.png) | ![](Photos/7.png) | ![](Photos/8.png) |
