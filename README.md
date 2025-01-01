@@ -24,6 +24,4 @@ mümkündür.
 ![](Photos/3.png) | ![](Photos/4.png) | ![](Photos/5.png) |
 
 
-Günlük Doktor Randevuları | Listeleme | Bölüm Listeleme | Bölüm Ekleme | Bölüm Listeleme
------------- | ------------ | ------------ |------------ |------------ |
-![](Photos/1.png) | ![](Photos/2.png) | ![](Photos/3.png) | ![](Photos/4.png) | ![](Photos/5.png) |
+
